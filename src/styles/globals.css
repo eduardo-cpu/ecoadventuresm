@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-gray-900;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  p {
+    @apply text-gray-600 leading-relaxed;
+  }
+  
+  a {
+    @apply text-blue-500 hover:text-blue-700 transition-colors;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 text-white font-medium py-3 px-6 rounded-full hover:bg-blue-600 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 font-medium py-3 px-6 rounded-full hover:bg-gray-300 transition-colors;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 text-gray-800 font-medium py-3 px-6 rounded-full hover:bg-gray-100 transition-colors;
+  }
+  
+  .container {
+    @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+}
+
+/* Classes específicas para imitar o estilo da Apple */
+.apple-gradient {
+  background: linear-gradient(135deg, #2c88d9 0%, #1a74c4 100%);
+}
+
+.apple-card {
+  @apply bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow;
+}
+
+.apple-headline {
+  @apply text-4xl md:text-6xl font-semibold leading-tight;
+}
+
+.apple-subheadline {
+  @apply text-xl md:text-2xl text-gray-500 mt-4 max-w-3xl;
+}
