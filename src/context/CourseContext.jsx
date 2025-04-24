@@ -26,7 +26,7 @@ const MOCK_COURSES = [
         code: "APH-T",
         title: "Atendimento Pré Hospitalar Tático",
         shortDescription: "Treinamento especializado para profissionais que atuam em situações táticas e de risco.",
-        description: "Avaliação inicial da vítima tática; Comunicações em ambiente tático; Triagem em incidentes com múltiplas vítimas; Evacuação tática de feridos; Extração rápida; Tratamento sob fogo; Cuidados táticos em campo; Manejo de vias aéreas em ambiente hostil; Controle de hemorragias táticas; Uso de torniquetes; Cuidados com ferimentos penetrantes; Abordagem MARCH para avaliação tática; Monitoramento de trauma em ambientes remotos; Imobilização e transporte em terreno hostil; Evacuação aeromédica tática; Protocolos de operações especiais; Simulados práticos de resgate tático",
+        description: ".",
         image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     },
     {
