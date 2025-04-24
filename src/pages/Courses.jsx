@@ -27,7 +27,7 @@ const Courses = () => {
                     <div className="flex flex-col items-center text-center mb-16">
                         <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase mb-6">Catálogo de Cursos</span>
                         <h1 className="apple-headline text-gray-900 mb-6 leading-tight">
-                            Formação e qualificação<br/>de excelência para resgatistas
+                            Formação e qualificação<br/>de excelência para socorristas
                         </h1>
                         <p className="apple-subheadline mx-auto mb-8">
                             Conheça nossa variedade de cursos especializados para profissionais que desejam atuar em situações de resgate e emergência.
@@ -49,7 +49,7 @@ const Courses = () => {
                         <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase mb-3 block">Nossos Programas</span>
                         <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6">Cursos Disponíveis</h2>
                         <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-                            Escolha entre nossos cursos especializados para iniciar ou aprimorar sua carreira como resgatista.
+                            Escolha entre nossos cursos especializados para iniciar ou aprimorar sua carreira como socorrista.
                         </p>
                     </div>
                     
@@ -63,7 +63,7 @@ const Courses = () => {
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-3xl md:text-4xl font-semibold mb-6">Pronto para iniciar sua formação?</h2>
                     <p className="text-xl opacity-90 max-w-2xl mx-auto mb-10">
-                        Inscreva-se em nossos cursos hoje mesmo e dê o próximo passo em sua carreira como resgatista profissional.
+                        Inscreva-se em nossos cursos hoje mesmo e dê o próximo passo em sua carreira como socorrista profissional.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button 

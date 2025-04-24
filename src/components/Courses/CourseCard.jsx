@@ -17,7 +17,7 @@ const CourseCard = ({ course }) => {
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-24"></div>
             </div>
             <div className="px-7 py-6">
-                <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase">Formação de Resgatistas</span>
+                <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase">Formação de Socorristas</span>
                 <h2 className="font-semibold text-2xl mt-2 text-gray-900">{course.title}</h2>
                 <p className="text-gray-500 mt-3 leading-relaxed text-base line-clamp-3">{course.description}</p>
                 

@@ -22,7 +22,7 @@ const Home = () => {
         window.open('https://api.whatsapp.com/send/?phone=55999968205&text&type=phone_number&app_absent=0', '_blank');
     };
 
-    // Dados dos cursos de formação e qualificação de resgatistas
+    // Dados dos cursos de formação e qualificação de socorristas
     const featuredCourses = [
         {
             id: 1,
@@ -39,19 +39,19 @@ const Home = () => {
         {
             id: 3,
             title: "APH-T",
-            description: "Atendimento Pré Hospitalar Tático. Formação especializada para resgatistas que atuam em ambientes hostis e situações de conflito.",
+            description: "Atendimento Pré Hospitalar Tático. Formação especializada para socorristas que atuam em ambientes hostis e situações de conflito.",
             image: "https://images.unsplash.com/photo-1542884748-2b87b36c6b90?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
         },
         {
             id: 4,
             title: "SBV",
-            description: "Suporte Básico de Vida. Aprenda procedimentos essenciais para resgatistas que salvam vidas em situações de emergência cardíaca e respiratória.",
+            description: "Suporte Básico de Vida. Aprenda procedimentos essenciais para socorristas que salvam vidas em situações de emergência cardíaca e respiratória.",
             image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1789&q=80"
         },
         {
             id: 5,
             title: "RCU",
-            description: "Resgate em Conflitos Urbanos. Treinamento especializado para resgatistas que atuam em situações de resgate em ambientes urbanos complexos.",
+            description: "Resgate em Conflitos Urbanos. Treinamento especializado para socorristas que atuam em situações de resgate em ambientes urbanos complexos.",
             image: "https://images.unsplash.com/photo-1582502744081-2f45c6d2e4cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
         }
     ];
@@ -62,12 +62,12 @@ const Home = () => {
             <section className="pt-24 pb-16 bg-white overflow-hidden">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col items-center text-center mb-16">
-                        <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase mb-6">Formação Profissional de Resgatistas</span>
+                        <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase mb-6">Formação Profissional de Socorristas</span>
                         <h1 className="apple-headline text-gray-900 mb-6 leading-tight">
-                            Formação e qualificação<br/>de resgatistas desde 2005.
+                            Formação e qualificação<br/>de socorristas desde 2005.
                         </h1>
                         <p className="apple-subheadline mx-auto mb-8">
-                            Uma das pioneiras no ramo de treinamentos de APH há 20 anos trazendo conhecimento, educação e inovação para a formação de resgatistas.
+                            Uma das pioneiras no ramo de treinamentos de APH há 20 anos trazendo conhecimento, educação e inovação para a formação de socorristas.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <button 
@@ -86,7 +86,7 @@ const Home = () => {
                     <div className="relative h-[500px] rounded-3xl overflow-hidden mx-auto max-w-5xl shadow-2xl">
                         <img 
                             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
-                            alt="Formação de Resgatistas" 
+                            alt="Formação de Socorristas" 
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -101,7 +101,7 @@ const Home = () => {
                         <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6">Experiência e tradição</h2>
                         <p className="text-xl text-gray-500 max-w-3xl mx-auto">
                             Fundada em 2005, a Baisch & Oliveira, sob o nome comercial EcoAdventure Cursos e Treinamentos, 
-                            é uma das pioneiras no ramo de formação e qualificação de resgatistas.
+                            é uma das pioneiras no ramo de formação e qualificação de socorristas.
                         </p>
                     </div>
                     
@@ -155,7 +155,7 @@ const Home = () => {
                         <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase mb-3 block">Nossos Cursos</span>
                         <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6">Formação especializada</h2>
                         <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-                            Escolha o programa que melhor atende às suas necessidades de formação e qualificação profissional como resgatista.
+                            Escolha o programa que melhor atende às suas necessidades de formação e qualificação profissional como socorrista.
                         </p>
                     </div>
                     
@@ -175,7 +175,7 @@ const Home = () => {
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-3xl md:text-4xl font-semibold mb-6">Comece sua formação hoje</h2>
                     <p className="text-xl opacity-90 max-w-2xl mx-auto mb-10">
-                        Inscreva-se em nossos cursos e torne-se um resgatista qualificado. Oferecemos treinamento de alto padrão e certificação reconhecida desde 2005.
+                        Inscreva-se em nossos cursos e torne-se um socorrista qualificado. Oferecemos treinamento de alto padrão e certificação reconhecida desde 2005.
                     </p>
                     <button 
                         onClick={openGoogleForms}
@@ -194,7 +194,7 @@ const Home = () => {
                             <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase mb-3 block">Contato</span>
                             <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6">Entre em contato conosco</h2>
                             <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-                                Estamos à disposição para esclarecer dúvidas e fornecer mais informações sobre nossos cursos de formação de resgatistas.
+                                Estamos à disposição para esclarecer dúvidas e fornecer mais informações sobre nossos cursos de formação de socorristas.
                             </p>
                         </div>
                         

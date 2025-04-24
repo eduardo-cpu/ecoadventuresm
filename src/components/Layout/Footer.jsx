@@ -17,7 +17,7 @@ const Footer = () => {
                             />
                         </Link>
                         <p className="text-gray-500 text-sm mt-4 leading-relaxed">
-                            Centro de formação e qualificação de resgatistas. Uma das pioneiras no ramo de treinamentos de APH há 20 anos.
+                            Centro de formação e qualificação de socorristas. Uma das pioneiras no ramo de treinamentos de APH há 20 anos.
                         </p>
                     </div>
                     
