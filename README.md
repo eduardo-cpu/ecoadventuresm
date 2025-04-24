@@ -1,65 +1,97 @@
-# React Company Courses
+# 🚨 Formação Profissional de Resgatistas - Desde 2005
 
-This project is a React application that allows users to register and enroll in courses offered by a specific company. It utilizes Tailwind CSS for styling and provides a user-friendly interface for authentication and course management.
+![Logo Formação de Resgatistas](image.png)
 
-## Features
+## 📋 Sobre o Projeto
 
-- User authentication (login and registration)
-- Course listing and details
-- Responsive design using Tailwind CSS
-- Context API for state management
+Somos uma das pioneiras no ramo de treinamentos de Atendimento Pré-Hospitalar (APH) há 20 anos, trazendo conhecimento, educação e inovação para a formação de resgatistas. Nossa missão é capacitar profissionais com as habilidades necessárias para salvar vidas em situações de emergência.
 
-## Project Structure
+## ✨ Funcionalidades Principais
+
+- **🏥 Catálogo de Cursos:** Explore nossa variedade de cursos de formação para resgatistas
+- **📱 Design Responsivo:** Interface adaptável para desktop e dispositivos móveis usando Tailwind CSS
+- **🔍 Filtros de Cursos:** Encontre cursos por categoria, nível ou especialização
+- **📅 Informações Detalhadas:** Acesse programas completos, datas e pré-requisitos dos cursos
+- **👨‍🏫 Conheça os Instrutores:** Informações sobre nossa equipe de instrutores qualificados
+
+## 🏗️ Estrutura do Projeto
 
 ```
-react-company-courses
-├── public
-│   ├── index.html          # Main HTML file
-│   └── favicon.ico         # Favicon for the website
-├── src
-│   ├── components          # Reusable components
-│   ├── context             # Context providers for state management
-│   ├── pages               # Application pages
-│   ├── services            # API service functions
-│   ├── styles              # Global styles
-│   ├── App.jsx             # Main application component
-│   ├── index.jsx           # Entry point for the React application
-│   └── routes.jsx          # Application routes
-├── .gitignore              # Git ignore file
-├── package.json            # NPM configuration file
-├── tailwind.config.js      # Tailwind CSS configuration
-└── postcss.config.js       # PostCSS configuration
+ecoadventuresm/
+├── public/               # Arquivos públicos estáticos
+├── src/
+│   ├── components/       # Componentes reutilizáveis
+│   │   ├── Courses/      # Componentes relacionados aos cursos
+│   │   ├── Layout/       # Componentes de estrutura da página
+│   │   └── UI/           # Elementos de interface do usuário
+│   ├── context/          # Providers de contexto React
+│   ├── pages/            # Páginas da aplicação
+│   ├── services/         # Serviços e conexões com APIs
+│   └── styles/           # Estilos globais
+└── README.md             # Esta documentação
 ```
 
-## Installation
+## 🚀 Como Começar
 
-1. Clone the repository:
+### Pré-requisitos
+
+- Node.js (v14.x ou superior)
+- npm ou yarn
+
+### Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/ecoadventuresm.git
    ```
-   git clone https://github.com/yourusername/react-company-courses.git
+
+2. Acesse a pasta do projeto:
+   ```bash
+   cd ecoadventuresm
    ```
-2. Navigate to the project directory:
-   ```
-   cd react-company-courses
-   ```
-3. Install the dependencies:
-   ```
+
+3. Instale as dependências:
+   ```bash
    npm install
+   # ou
+   yarn install
    ```
-4. Start the development server:
-   ```
+
+4. Inicie o servidor de desenvolvimento:
+   ```bash
    npm start
+   # ou
+   yarn start
    ```
 
-## Usage
+5. Acesse a aplicação em `http://localhost:3000`
 
-- Navigate to `/register` to create a new account.
-- Navigate to `/login` to access your account.
-- Explore the available courses on the `/courses` page.
+## 🌟 Como Usar
 
-## Contributing
+- Navegue pelo **Catálogo de Cursos** disponíveis
+- Clique em um curso para ver mais **Detalhes**, incluindo conteúdo programático e datas
+- Entre em contato através do formulário para mais informações ou inscrições
+- Acesse nossa seção de **FAQ** para sanar dúvidas comuns
 
-Feel free to submit issues or pull requests for any improvements or bug fixes.
+## 💯 Por Que Escolher Nossa Formação?
 
-## License
+- **Experiência:** 20 anos formando profissionais qualificados no mercado
+- **Instrutores Especializados:** Profissionais com vasta experiência prática em resgate
+- **Certificação Reconhecida:** Certificados com validade e reconhecimento no mercado
+- **Infraestrutura Completa:** Salas equipadas e ambientes de simulação realistas
 
-This project is licensed under the MIT License.
+## 🤝 Contribuindo
+
+Adoraríamos sua contribuição! Sinta-se à vontade para:
+
+1. Reportar bugs
+2. Sugerir novas funcionalidades
+3. Enviar pull requests
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
+
+---
+
+🚑 **Formação Profissional de Resgatistas** - Formando profissionais preparados para salvar vidas desde 2005
