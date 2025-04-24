@@ -39,7 +39,7 @@ ecoadventuresm/
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/ecoadventuresm.git
+   git clone https://github.com/eduardo-cpu/ecoadventuresm.git
    ```
 
 2. Acesse a pasta do projeto:
