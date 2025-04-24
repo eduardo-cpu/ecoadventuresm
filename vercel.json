@@ -12,6 +12,10 @@
       "dest": "/favicon.ico"
     },
     {
+      "src": "/image.png",
+      "dest": "/image.png"
+    },
+    {
       "src": "/manifest.json",
       "dest": "/manifest.json"
     },

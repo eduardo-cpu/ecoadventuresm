@@ -23,7 +23,7 @@ const Header = () => {
                 <div className="flex items-center justify-between h-16 px-4">
                     <Link to="/" className="flex-shrink-0">
                         <img 
-                            src="./image.png" 
+                            src="/image.png" 
                             alt="EcoAdventureLogo" 
                             className="h-10"
                         />
