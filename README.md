@@ -10,9 +10,6 @@ Somos uma das pioneiras no ramo de treinamentos de Atendimento Pré-Hospitalar (
 
 - **🏥 Catálogo de Cursos:** Explore nossa variedade de cursos de formação para resgatistas
 - **📱 Design Responsivo:** Interface adaptável para desktop e dispositivos móveis usando Tailwind CSS
-- **🔍 Filtros de Cursos:** Encontre cursos por categoria, nível ou especialização
-- **📅 Informações Detalhadas:** Acesse programas completos, datas e pré-requisitos dos cursos
-- **👨‍🏫 Conheça os Instrutores:** Informações sobre nossa equipe de instrutores qualificados
 
 ## 🏗️ Estrutura do Projeto
 
