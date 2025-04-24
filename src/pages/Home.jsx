@@ -224,7 +224,7 @@ const Home = () => {
                                     </svg>
                                 </div>
                                 <h3 className="text-xl font-semibold mb-3">WhatsApp</h3>
-                                <p className="text-gray-500 mb-4">Fale diretamente com o proprietário:</p>
+                                <p className="text-gray-500 mb-4">Fale diretamente conosco:</p>
                                 <button 
                                     onClick={handleWhatsApp}
                                     className="btn-primary text-sm py-2 px-5"
