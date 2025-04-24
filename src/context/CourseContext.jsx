@@ -66,13 +66,18 @@ export const CourseProvider = ({ children }) => {
             try {
                 // Try to fetch from API first
                 const fetchedCourses = await fetchCourses();
-                setCourses(fetchedCourses);
+                // Garantir que fetchedCourses seja um array
+                if (fetchedCourses && Array.isArray(fetchedCourses)) {
+                    setCourses(fetchedCourses);
+                } else {
+                    console.warn('API retornou dados inválidos para cursos. Usando dados mockados.');
+                    setCourses(MOCK_COURSES);
+                }
                 setError(null); // Reset any errors if successful
             } catch (err) {
                 console.log('Using mock data due to API error:', err.message);
                 // Fall back to mock data if API fails
                 setCourses(MOCK_COURSES);
-                // Não definimos o erro aqui, pois os dados mocados estão disponíveis
                 setError(null); // Reset error since we're using mock data as fallback
             } finally {
                 setLoading(false);
@@ -100,7 +105,12 @@ export const CourseProvider = ({ children }) => {
     };
 
     return (
-        <CourseContext.Provider value={{ courses, loading, error, registerCourse }}>
+        <CourseContext.Provider value={{ 
+            courses: Array.isArray(courses) ? courses : [], 
+            loading, 
+            error, 
+            registerCourse 
+        }}>
             {children}
         </CourseContext.Provider>
     );
