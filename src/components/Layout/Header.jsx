@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const navigate = useNavigate();
     
     useEffect(() => {
         const handleScroll = () => {
@@ -16,6 +17,12 @@ const Header = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const openRegistrationForm = (e) => {
+        e.preventDefault();
+        console.log('Abrindo formulário de inscrição personalizado...');
+        navigate('/inscricao');
+    };
 
     return (
         <header className={`fixed w-full z-20 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-white/80'}`}>
@@ -44,10 +51,7 @@ const Header = () => {
                             <li>
                                 <a 
                                     href="#" 
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        window.open('https://docs.google.com/forms/d/e/1FAIpQLSfpEZafAY2qE-MsSYQHT7y44hRAmHqXVSEk8cDZEZ0lpxKxrg/viewform', '_blank');
-                                    }}
+                                    onClick={openRegistrationForm}
                                     className="text-sm font-medium text-gray-700 hover:text-blue-500 transition-colors"
                                 >
                                     Inscrição

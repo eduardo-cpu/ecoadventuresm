@@ -6,6 +6,8 @@ import CourseDetail from './pages/CourseDetail';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import RegistrationForm from './components/Registration/RegistrationForm';
+import RegistroSucesso from './pages/RegistroSucesso';
 
 const AppRoutes = () => {
     return (
@@ -16,6 +18,8 @@ const AppRoutes = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/inscricao" element={<RegistrationForm />} />
+            <Route path="/registro-sucesso" element={<RegistroSucesso />} />
         </Routes>
     );
 };

@@ -17,8 +17,56 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+logs
+*.log
+
+# IDE/Editor configs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos temporários
+*.tmp
+*.temp
+.cache/
+.temp/
+.tmp/
+.history/
+
+# Arquivos de configuração local
+config.local.js
+config.development.js
+api-keys.json
+credentials.json
+*.pem
+*.key
+
+# Vercel
 .vercel
+
+# Certificados e chaves de API
+**/apiConfig.js
+**/apiConfig.local.js
+**/apiKeys.js
+**/secrets.js
+
+# Firebase
+.firebase/
+firebase-debug.log

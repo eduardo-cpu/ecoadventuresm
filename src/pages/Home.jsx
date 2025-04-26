@@ -1,21 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CourseCard from '../components/Courses/CourseCard';
 
 const Home = () => {
-    // Função otimizada para abrir apenas em nova guia sem atualizar a página atual
-    const openGoogleForms = (e) => {
-        e.preventDefault(); // Previne qualquer comportamento padrão do evento
-        console.log('Abrindo formulário de inscrição...');
-        const formsURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfpEZafAY2qE-MsSYQHT7y44hRAmHqXVSEk8cDZEZ0lpxKxrg/viewform';
-        
-        try {
-            window.open(formsURL, '_blank');
-        } catch (e) {
-            console.error('Erro ao tentar abrir o formulário:', e);
-            // Não fazemos redirecionamento na mesma página, pois queremos manter a página atual
-            alert('Não foi possível abrir o formulário. Por favor, verifique se os pop-ups estão permitidos em seu navegador.');
-        }
+    const navigate = useNavigate();
+
+    // Função otimizada para direcionar para nosso formulário personalizado
+    const openRegistrationForm = (e) => {
+        e.preventDefault();
+        console.log('Abrindo formulário de inscrição personalizado...');
+        navigate('/inscricao');
     };
 
     const handleWhatsApp = () => {
@@ -71,7 +65,7 @@ const Home = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <button 
-                                onClick={openGoogleForms}
+                                onClick={openRegistrationForm}
                                 className="btn-primary text-center"
                             >
                                 Inscreva-se Agora
@@ -178,7 +172,7 @@ const Home = () => {
                         Inscreva-se em nossos cursos e torne-se um socorrista qualificado. Oferecemos treinamento de alto padrão e certificação reconhecida desde 2005.
                     </p>
                     <button 
-                        onClick={openGoogleForms}
+                        onClick={openRegistrationForm}
                         className="bg-white text-blue-600 py-4 px-8 rounded-full text-lg font-medium hover:bg-opacity-90 transition-colors"
                     >
                         Inscreva-se Agora

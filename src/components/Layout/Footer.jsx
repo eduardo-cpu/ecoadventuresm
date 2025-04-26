@@ -1,7 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+    const navigate = useNavigate();
+
+    const openRegistrationForm = (e) => {
+        e.preventDefault();
+        navigate('/inscricao');
+    };
+
     return (
         <footer className="border-t border-gray-200">
             <div className="container mx-auto px-4">
@@ -43,10 +50,7 @@ const Footer = () => {
                             <li>
                                 <a 
                                     href="#" 
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        window.open('https://docs.google.com/forms/d/e/1FAIpQLSfpEZafAY2qE-MsSYQHT7y44hRAmHqXVSEk8cDZEZ0lpxKxrg/viewform', '_blank');
-                                    }}
+                                    onClick={openRegistrationForm}
                                     className="text-gray-500 hover:text-blue-500 text-sm"
                                 >
                                     Inscrição

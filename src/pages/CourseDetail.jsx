@@ -10,6 +10,11 @@ const CourseDetail = () => {
     // Convert string ID from URL params to match the ID type in the courses object
     const course = courses.find(course => course.id === id || course.id === Number(id));
 
+    // Função para abrir o formulário de inscrição personalizado
+    const openRegistrationForm = () => {
+        navigate('/inscricao');
+    };
+
     if (!course) {
         return (
             <div className="container mx-auto px-4 py-16 text-center">
@@ -57,9 +62,7 @@ const CourseDetail = () => {
                         Voltar para Cursos
                     </button>
                     <button 
-                        onClick={() => {
-                            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfpEZafAY2qE-MsSYQHT7y44hRAmHqXVSEk8cDZEZ0lpxKxrg/viewform', '_blank');
-                        }}
+                        onClick={openRegistrationForm}
                         className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
                     >
                         Inscrever-se neste Curso

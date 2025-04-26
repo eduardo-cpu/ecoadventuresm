@@ -1,22 +1,16 @@
 import React, { useContext } from 'react';
 import CourseList from '../components/Courses/CourseList';
 import { CourseContext } from '../context/CourseContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Courses = () => {
     const { courses, loading, error } = useContext(CourseContext);
+    const navigate = useNavigate();
 
-    const openGoogleForms = (e) => {
+    const openRegistrationForm = (e) => {
         e.preventDefault();
-        console.log('Abrindo formulário de inscrição...');
-        const formsURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfpEZafAY2qE-MsSYQHT7y44hRAmHqXVSEk8cDZEZ0lpxKxrg/viewform';
-        
-        try {
-            window.open(formsURL, '_blank');
-        } catch (e) {
-            console.error('Erro ao tentar abrir o formulário:', e);
-            alert('Não foi possível abrir o formulário. Por favor, verifique se os pop-ups estão permitidos em seu navegador.');
-        }
+        console.log('Abrindo formulário de inscrição personalizado...');
+        navigate('/inscricao');
     };
 
     return (
@@ -33,7 +27,7 @@ const Courses = () => {
                             Conheça nossa variedade de cursos especializados para profissionais que desejam atuar em situações de resgate e emergência.
                         </p>
                         <button 
-                            onClick={openGoogleForms}
+                            onClick={openRegistrationForm}
                             className="btn-primary text-center"
                         >
                             Inscreva-se Agora
@@ -67,7 +61,7 @@ const Courses = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button 
-                            onClick={openGoogleForms}
+                            onClick={openRegistrationForm}
                             className="bg-white text-blue-600 py-4 px-8 rounded-full text-lg font-medium hover:bg-opacity-90 transition-colors"
                         >
                             Inscreva-se Agora
