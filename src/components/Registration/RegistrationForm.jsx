@@ -22,6 +22,7 @@ const RegistrationForm = () => {
         rg: '',
         cpf: '',
         cep: '',
+        endereco: '',
         bairro: '',
         numero: '',
         cidade: '',
@@ -103,6 +104,7 @@ const RegistrationForm = () => {
                 <div style="margin-bottom: 8px;"><strong>RG:</strong> ${data.rg || '-'}</div>
                 <div style="margin-bottom: 8px;"><strong>CPF:</strong> ${data.cpf}</div>
                 <div style="margin-bottom: 8px;"><strong>CEP:</strong> ${data.cep}</div>
+                <div style="margin-bottom: 8px;"><strong>Endereço:</strong> ${data.endereco || '-'}</div>
                 <div style="margin-bottom: 8px;"><strong>Bairro:</strong> ${data.bairro}</div>
                 <div style="margin-bottom: 8px;"><strong>Número:</strong> ${data.numero}</div>
                 <div style="margin-bottom: 8px;"><strong>Cidade (Reside):</strong> ${data.cidade}</div>
@@ -210,6 +212,7 @@ const RegistrationForm = () => {
                 rg: formData.rg || '-',
                 cpf: formData.cpf,
                 cep: formData.cep,
+                endereco: formData.endereco || '-',
                 bairro: formData.bairro,
                 numero: formData.numero,
                 cidade: formData.cidade,
@@ -324,6 +327,7 @@ const RegistrationForm = () => {
                         <div><strong>CPF:</strong> {userData.cpf}</div>
                         <div><strong>RG:</strong> {userData.rg}</div>
                         <div><strong>CEP:</strong> {userData.cep}</div>
+                        <div><strong>Endereço:</strong> {userData.endereco || '-'}</div>
                         <div><strong>Bairro:</strong> {userData.bairro}</div>
                         <div><strong>Número:</strong> {userData.numero}</div>
                         <div><strong>Cidade (Reside):</strong> {userData.cidade}</div>
@@ -344,9 +348,9 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto py-8 px-4">
-            <div className="bg-white shadow-lg rounded-lg p-6 mb-8">
-                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Formulário de Inscrição</h2>
+        <div className="max-w-4xl mx-auto py-4 px-3 sm:py-8 sm:px-4">
+            <div className="bg-white shadow-lg rounded-lg p-4 sm:p-6 mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold mb-6 text-center text-gray-800">Formulário de Inscrição</h2>
                 
                 {error && (
                     <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6">
@@ -373,117 +377,137 @@ const RegistrationForm = () => {
                     </div>
                 ) : (
                     <form ref={formRef} onSubmit={handleSubmit}>
-                        <div className="space-y-6">
+                        <div className="space-y-8">
                             <div className="border-b pb-6">
                                 <h3 className="text-lg font-semibold mb-4 text-gray-700">Informações Pessoais</h3>
                                 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="col-span-2">
+                                <div className="space-y-4">
+                                    <div>
                                         <label className="block text-gray-700 font-medium mb-2">Nome Completo</label>
                                         <input
                                             type="text"
                                             name="nomeCompleto"
                                             value={formData.nomeCompleto}
                                             onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
                                     </div>
                                     
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">RG</label>
-                                        <input
-                                            type="text"
-                                            name="rg"
-                                            value={formData.rg}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">CPF</label>
-                                        <input
-                                            type="text"
-                                            name="cpf"
-                                            value={formData.cpf}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">RG</label>
+                                            <input
+                                                type="text"
+                                                name="rg"
+                                                value={formData.rg}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            />
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">CPF</label>
+                                            <input
+                                                type="text"
+                                                name="cpf"
+                                                value={formData.cpf}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
                                     </div>
                                     
                                     {/* Campos de endereço */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">CEP</label>
+                                            <input
+                                                type="text"
+                                                name="cep"
+                                                value={formData.cep}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Bairro</label>
+                                            <input
+                                                type="text"
+                                                name="bairro"
+                                                value={formData.bairro}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+
                                     <div>
-                                        <label className="block text-gray-700 font-medium mb-2">CEP</label>
+                                        <label className="block text-gray-700 font-medium mb-2">Endereço (Rua)</label>
                                         <input
                                             type="text"
-                                            name="cep"
-                                            value={formData.cep}
+                                            name="endereco"
+                                            value={formData.endereco}
                                             onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
                                     </div>
                                     
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Bairro</label>
-                                        <input
-                                            type="text"
-                                            name="bairro"
-                                            value={formData.bairro}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Número</label>
+                                            <input
+                                                type="text"
+                                                name="numero"
+                                                value={formData.numero}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Cidade (Reside)</label>
+                                            <input
+                                                type="text"
+                                                name="cidade"
+                                                value={formData.cidade}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
                                     </div>
                                     
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Número</label>
-                                        <input
-                                            type="text"
-                                            name="numero"
-                                            value={formData.numero}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Cidade (Reside)</label>
-                                        <input
-                                            type="text"
-                                            name="cidade"
-                                            value={formData.cidade}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Estado</label>
-                                        <input
-                                            type="text"
-                                            name="estado"
-                                            value={formData.estado}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">E-mail</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Estado</label>
+                                            <input
+                                                type="text"
+                                                name="estado"
+                                                value={formData.estado}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">E-mail</label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
                                     </div>
                                     
                                     <div>
@@ -493,7 +517,7 @@ const RegistrationForm = () => {
                                             name="dataNascimento"
                                             value={formData.dataNascimento}
                                             onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
                                     </div>
@@ -503,50 +527,54 @@ const RegistrationForm = () => {
                             <div className="border-b pb-6">
                                 <h3 className="text-lg font-semibold mb-4 text-gray-700">Contato</h3>
                                 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Telefone</label>
-                                        <input
-                                            type="text"
-                                            name="telefone"
-                                            value={formData.telefone}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
+                                <div className="space-y-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Telefone</label>
+                                            <input
+                                                type="text"
+                                                name="telefone"
+                                                value={formData.telefone}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">WhatsApp</label>
+                                            <input
+                                                type="text"
+                                                name="whatsapp"
+                                                value={formData.whatsapp}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            />
+                                        </div>
                                     </div>
                                     
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">WhatsApp</label>
-                                        <input
-                                            type="text"
-                                            name="whatsapp"
-                                            value={formData.whatsapp}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Facebook</label>
-                                        <input
-                                            type="text"
-                                            name="facebook"
-                                            value={formData.facebook}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Instagram</label>
-                                        <input
-                                            type="text"
-                                            name="instagram"
-                                            value={formData.instagram}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Facebook</label>
+                                            <input
+                                                type="text"
+                                                name="facebook"
+                                                value={formData.facebook}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            />
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Instagram</label>
+                                            <input
+                                                type="text"
+                                                name="instagram"
+                                                value={formData.instagram}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -554,29 +582,31 @@ const RegistrationForm = () => {
                             <div className="border-b pb-6">
                                 <h3 className="text-lg font-semibold mb-4 text-gray-700">Informações Profissionais</h3>
                                 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Local onde Trabalha</label>
-                                        <input
-                                            type="text"
-                                            name="localTrabalho"
-                                            value={formData.localTrabalho}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
-                                    </div>
-                                    
-                                    <div>
-                                        <label className="block text-gray-700 font-medium mb-2">Profissão</label>
-                                        <input
-                                            type="text"
-                                            name="profissao"
-                                            value={formData.profissao}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
+                                <div className="space-y-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Local onde Trabalha</label>
+                                            <input
+                                                type="text"
+                                                name="localTrabalho"
+                                                value={formData.localTrabalho}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-700 font-medium mb-2">Profissão</label>
+                                            <input
+                                                type="text"
+                                                name="profissao"
+                                                value={formData.profissao}
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                        </div>
                                     </div>
                                     
                                     <div>
@@ -586,7 +616,7 @@ const RegistrationForm = () => {
                                             name="cidadeCurso"
                                             value={formData.cidadeCurso}
                                             onChange={handleChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
                                     </div>
@@ -596,7 +626,7 @@ const RegistrationForm = () => {
                             <div>
                                 <h3 className="text-lg font-semibold mb-4 text-gray-700">Cursos Selecionados</h3>
                                 
-                                <div className="space-y-4">
+                                <div className="space-y-5">
                                     <div className="flex items-center">
                                         <input
                                             type="checkbox"
@@ -664,7 +694,7 @@ const RegistrationForm = () => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {loading ? 'Enviando...' : 'Enviar Inscrição'}
                             </button>
