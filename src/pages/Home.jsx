@@ -40,7 +40,7 @@ const Home = () => {
             id: 4,
             title: "SBV",
             description: "Suporte Básico de Vida. Aprenda procedimentos essenciais para socorristas que salvam vidas em situações de emergência cardíaca e respiratória.",
-            image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1789&q=80"
+            image: "/sbv.jpeg"
         },
         {
             id: 5,
@@ -79,8 +79,8 @@ const Home = () => {
                     {/* Imagem Hero - Estilo Apple */}
                     <div className="relative h-[500px] rounded-3xl overflow-hidden mx-auto max-w-5xl shadow-2xl">
                         <img 
-                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
-                            alt="Formação de Socorristas" 
+                            src="/foto%20pagina%20inicial.jpeg" 
+                            alt="Equipe EcoAdventure com ambulâncias e bandeiras" 
                             className="w-full h-full object-cover"
                         />
                     </div>
