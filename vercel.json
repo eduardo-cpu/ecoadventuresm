@@ -19,6 +19,30 @@
       "src": "/image.png",
       "dest": "/image.png"
     },
+     {
+      "src": "/inicial.png",
+      "dest": "/inicial.png"
+    },
+    {
+      "src": "/sbv.png",
+      "dest": "/sbv.png"
+    },
+    {
+      "src": "/sbv.jpeg",
+      "dest": "/sbv.jpeg"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "dest": "/apple-touch-icon.png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "dest": "/favicon-32x32.png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "dest": "/favicon-16x16.png"
+    },
     {
       "src": "/manifest.json",
       "dest": "/manifest.json"
