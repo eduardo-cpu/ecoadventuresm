@@ -79,7 +79,7 @@ const Home = () => {
                     {/* Imagem Hero - Estilo Apple */}
                     <div className="relative h-[500px] rounded-3xl overflow-hidden mx-auto max-w-5xl shadow-2xl">
                         <img 
-                            src="/foto%20pagina%20inicial.jpeg" 
+                            src="/inicial.jpeg" 
                             alt="Equipe EcoAdventure com ambulâncias e bandeiras" 
                             className="w-full h-full object-cover"
                         />
