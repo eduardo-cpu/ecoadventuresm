@@ -40,7 +40,7 @@ const Home = () => {
             id: 4,
             title: "SBV",
             description: "Suporte Básico de Vida. Aprenda procedimentos essenciais para socorristas que salvam vidas em situações de emergência cardíaca e respiratória.",
-            image: "/sbv.jpeg"
+            image: "/sbv.png"
         },
         {
             id: 5,
@@ -79,7 +79,7 @@ const Home = () => {
                     {/* Imagem Hero - Estilo Apple */}
                     <div className="relative h-[500px] rounded-3xl overflow-hidden mx-auto max-w-5xl shadow-2xl">
                         <img 
-                            src="/inicial.jpeg" 
+                            src="/inicial.png" 
                             alt="Equipe EcoAdventure com ambulâncias e bandeiras" 
                             className="w-full h-full object-cover"
                         />
