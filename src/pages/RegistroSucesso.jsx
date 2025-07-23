@@ -330,6 +330,11 @@ const RegistroSucesso = () => {
                         </div>
                         
                         <div className="flex flex-wrap">
+                            <span className="font-semibold w-48">Endereço:</span>
+                            <span>{userData.endereco || '-'}</span>
+                        </div>
+                        
+                        <div className="flex flex-wrap">
                             <span className="font-semibold w-48">Bairro:</span>
                             <span>{userData.bairro}</span>
                         </div>
