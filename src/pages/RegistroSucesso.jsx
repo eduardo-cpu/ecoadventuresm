@@ -172,7 +172,7 @@ const RegistroSucesso = () => {
             @media print {
                 @page { 
                     size: 148mm 210mm; /* Tamanho A5 */
-                    margin: 10mm;
+                    margin: 8mm;
                 }
                 body * {
                     visibility: hidden;
@@ -185,9 +185,44 @@ const RegistroSucesso = () => {
                     left: 0;
                     top: 0;
                     width: 100%;
-                    padding: 10mm;
+                    padding: 5mm;
                     max-width: 100%;
-                    font-size: 10pt; /* Reduz o tamanho da fonte para A5 */
+                    font-size: 8pt !important; /* Fonte menor para caber tudo */
+                    line-height: 1.2 !important;
+                }
+                #print-container h3 {
+                    font-size: 12pt !important;
+                    margin-bottom: 8px !important;
+                }
+                #print-container img {
+                    height: 30px !important; /* Logo menor */
+                    margin-bottom: 5px !important;
+                }
+                #print-container .space-y-2 {
+                    gap: 2px !important;
+                }
+                #print-container .space-y-2 > div {
+                    margin-bottom: 1px !important;
+                    padding: 1px 0 !important;
+                }
+                #print-container .font-semibold {
+                    font-weight: 600 !important;
+                    font-size: 8pt !important;
+                    width: 100px !important;
+                    display: inline-block;
+                }
+                #print-container h4 {
+                    font-size: 9pt !important;
+                    margin: 6px 0 3px 0 !important;
+                    padding-top: 6px !important;
+                }
+                #print-container .border-t {
+                    margin-top: 6px !important;
+                    padding-top: 4px !important;
+                }
+                #print-container .text-sm {
+                    font-size: 7pt !important;
+                    line-height: 1.1 !important;
                 }
                 .no-print {
                     display: none !important;
@@ -294,158 +329,147 @@ const RegistroSucesso = () => {
                     </button>
                 </div>
 
-                {/* Área para impressão - Design aprimorado para garantir compatibilidade */}
-                <div id="print-container" ref={printRef} className="border rounded-lg p-8 bg-white shadow-sm">
-                    {/* Logo para documento impresso */}
-                    <div className="text-center mb-6">
+                {/* Área para impressão - Design otimizado para A5 */}
+                <div id="print-container" ref={printRef} className="border rounded-lg p-4 bg-white shadow-sm">
+                    {/* Logo e título compactos */}
+                    <div className="text-center mb-3">
                         <img 
                             src="/image.png" 
                             alt="EcoAdventure Logo" 
-                            className="h-16 mx-auto" 
+                            className="h-12 mx-auto" 
                             crossOrigin="anonymous"
                         />
-                        <h3 className="text-2xl font-bold mt-4">Comprovante de Inscrição</h3>
+                        <h3 className="text-lg font-bold mt-2">Comprovante de Inscrição</h3>
                     </div>
                     
-                    <div className="space-y-2 text-left">
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Nome completo:</span>
-                            <span className="text-green-700">{userData.nomeCompleto}</span>
+                    <div className="space-y-1 text-left text-xs">
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Nome:</span>
+                            <span className="text-green-700 text-xs">{userData.nomeCompleto}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">RG:</span>
-                            <span>{userData.rg || '-'}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">RG:</span>
+                            <span className="text-xs">{userData.rg || '-'}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">CPF:</span>
-                            <span>{userData.cpf}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">CPF:</span>
+                            <span className="text-xs">{userData.cpf}</span>
                         </div>
                         
-                        {/* Campos de endereço separados */}
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">CEP:</span>
-                            <span>{userData.cep}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">CEP:</span>
+                            <span className="text-xs">{userData.cep}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Endereço:</span>
-                            <span>{userData.endereco || '-'}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Endereço:</span>
+                            <span className="text-xs">{userData.endereco || '-'}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Bairro:</span>
-                            <span>{userData.bairro}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Bairro:</span>
+                            <span className="text-xs">{userData.bairro}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Número:</span>
-                            <span>{userData.numero}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Número:</span>
+                            <span className="text-xs">{userData.numero}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Cidade (Reside):</span>
-                            <span>{userData.cidade}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Cidade:</span>
+                            <span className="text-xs">{userData.cidade}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Estado:</span>
-                            <span>{userData.estado}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Estado:</span>
+                            <span className="text-xs">{userData.estado}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">E-mail:</span>
-                            <span>{userData.email}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">E-mail:</span>
+                            <span className="text-xs">{userData.email}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Data Nascimento:</span>
-                            <span>{userData.dataNascimento}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Nascimento:</span>
+                            <span className="text-xs">{userData.dataNascimento}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Telefone:</span>
-                            <span>{userData.telefone}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Telefone:</span>
+                            <span className="text-xs">{userData.telefone}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">WhatsApp:</span>
-                            <span>{userData.whatsapp || userData.telefone}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">WhatsApp:</span>
+                            <span className="text-xs">{userData.whatsapp || userData.telefone}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Facebook:</span>
-                            <span>{userData.facebook || '-'}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Facebook:</span>
+                            <span className="text-xs">{userData.facebook || '-'}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Instagram:</span>
-                            <span>{userData.instagram || '-'}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Instagram:</span>
+                            <span className="text-xs">{userData.instagram || '-'}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Local onde trabalha:</span>
-                            <span>{userData.localTrabalho}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Local trabalho:</span>
+                            <span className="text-xs">{userData.localTrabalho}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Profissão:</span>
-                            <span>{userData.profissao}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Profissão:</span>
+                            <span className="text-xs">{userData.profissao}</span>
                         </div>
                         
-                        <div className="flex flex-wrap">
-                            <span className="font-semibold w-48">Cidade do curso:</span>
-                            <span className="text-green-700 font-medium">{userData.cidadeCurso}</span>
+                        <div className="flex">
+                            <span className="font-semibold w-32 text-xs">Cidade curso:</span>
+                            <span className="text-green-700 font-medium text-xs">{userData.cidadeCurso}</span>
                         </div>
                         
-                        <h4 className="font-semibold pt-4 pb-2 text-lg">Cursos Selecionados:</h4>
+                        <h4 className="font-semibold pt-2 pb-1 text-sm">Cursos:</h4>
                         
-                        {/* Mostra apenas os cursos selecionados */}
+                        {/* Cursos em formato mais compacto */}
                         {userData.cursoAPH && (
-                            <div className="flex flex-wrap">
-                                <span className="font-semibold w-48">APH - Atendimento pré hospitalar:</span>
-                                <span className="flex items-center">
-                                    <span className="text-green-600 font-bold mr-1">✓</span> Selecionado
-                                </span>
+                            <div className="flex">
+                                <span className="font-semibold w-32 text-xs">APH:</span>
+                                <span className="text-green-600 text-xs">✓ Selecionado</span>
                             </div>
                         )}
                         
                         {userData.cursoSBV && (
-                            <div className="flex flex-wrap">
-                                <span className="font-semibold w-48">SBV - Suporte Básico de Vida:</span>
-                                <span className="flex items-center">
-                                    <span className="text-green-600 font-bold mr-1">✓</span> Selecionado
-                                </span>
+                            <div className="flex">
+                                <span className="font-semibold w-32 text-xs">SBV:</span>
+                                <span className="text-green-600 text-xs">✓ Selecionado</span>
                             </div>
                         )}
                         
                         {userData.cursoAPHP && (
-                            <div className="flex flex-wrap">
-                                <span className="font-semibold w-48">APH-P - Atendimento Pré Hospitalar Pediátrico:</span>
-                                <span className="flex items-center">
-                                    <span className="text-green-600 font-bold mr-1">✓</span> Selecionado
-                                </span>
+                            <div className="flex">
+                                <span className="font-semibold w-32 text-xs">APH-P:</span>
+                                <span className="text-green-600 text-xs">✓ Selecionado</span>
                             </div>
                         )}
                         
                         {userData.cursoRCU && (
-                            <div className="flex flex-wrap">
-                                <span className="font-semibold w-48">RCU - Resgate em Conflitos Urbanos:</span>
-                                <span className="flex items-center">
-                                    <span className="text-green-600 font-bold mr-1">✓</span> Selecionado
-                                </span>
+                            <div className="flex">
+                                <span className="font-semibold w-32 text-xs">RCU:</span>
+                                <span className="text-green-600 text-xs">✓ Selecionado</span>
                             </div>
                         )}
                     </div>
                     
-                    <div className="mt-8 pt-4 border-t border-gray-200">
-                        <div className="text-center text-sm text-gray-500">
-                            <p>Formulário gerado em: {new Date().toLocaleDateString('pt-BR')}</p>
-                            <p className="mt-1">EcoAdventure Cursos e Treinamentos - Desde 2005</p>
+                    <div className="mt-4 pt-2 border-t border-gray-200">
+                        <div className="text-center text-xs text-gray-500">
+                            <p className="text-xs">Gerado em: {new Date().toLocaleDateString('pt-BR')}</p>
+                            <p className="mt-1 text-xs">EcoAdventure - Desde 2005</p>
                         </div>
-                        
-                        {/* Assinatura do responsável removida para economizar espaço */}
                     </div>
                 </div>
             </div>
