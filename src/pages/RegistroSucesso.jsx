@@ -389,13 +389,13 @@ const RegistroSucesso = () => {
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-28 text-sm">E-mail:</span>
-                            <span className="text-sm">{userData.email}</span>
+                            <span className="font-semibold w-28 text-sm">Nascimento:</span>
+                            <span className="text-sm">{userData.dataNascimento}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-28 text-sm">Nascimento:</span>
-                            <span className="text-sm">{userData.dataNascimento}</span>
+                            <span className="font-semibold w-28 text-sm">E-mail:</span>
+                            <span className="text-sm">{userData.email}</span>
                         </div>
                         
                         <div className="flex">
