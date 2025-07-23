@@ -172,7 +172,7 @@ const RegistroSucesso = () => {
             @media print {
                 @page { 
                     size: 148mm 210mm; /* Tamanho A5 */
-                    margin: 8mm;
+                    margin: 6mm;
                 }
                 body * {
                     visibility: hidden;
@@ -185,44 +185,44 @@ const RegistroSucesso = () => {
                     left: 0;
                     top: 0;
                     width: 100%;
-                    padding: 5mm;
+                    padding: 4mm;
                     max-width: 100%;
-                    font-size: 8pt !important; /* Fonte menor para caber tudo */
-                    line-height: 1.2 !important;
+                    font-size: 10pt !important; /* Fonte um pouco maior */
+                    line-height: 1.3 !important;
                 }
                 #print-container h3 {
-                    font-size: 12pt !important;
-                    margin-bottom: 8px !important;
+                    font-size: 14pt !important;
+                    margin-bottom: 6px !important;
                 }
                 #print-container img {
-                    height: 30px !important; /* Logo menor */
-                    margin-bottom: 5px !important;
+                    height: 35px !important; /* Logo um pouco maior */
+                    margin-bottom: 4px !important;
                 }
-                #print-container .space-y-2 {
-                    gap: 2px !important;
+                #print-container .space-y-1 {
+                    gap: 1px !important;
                 }
-                #print-container .space-y-2 > div {
+                #print-container .space-y-1 > div {
                     margin-bottom: 1px !important;
-                    padding: 1px 0 !important;
+                    padding: 0.5px 0 !important;
                 }
                 #print-container .font-semibold {
                     font-weight: 600 !important;
-                    font-size: 8pt !important;
-                    width: 100px !important;
+                    font-size: 10pt !important;
+                    width: 85px !important;
                     display: inline-block;
                 }
                 #print-container h4 {
-                    font-size: 9pt !important;
-                    margin: 6px 0 3px 0 !important;
-                    padding-top: 6px !important;
-                }
-                #print-container .border-t {
-                    margin-top: 6px !important;
+                    font-size: 11pt !important;
+                    margin: 4px 0 2px 0 !important;
                     padding-top: 4px !important;
                 }
-                #print-container .text-sm {
-                    font-size: 7pt !important;
-                    line-height: 1.1 !important;
+                #print-container .border-t {
+                    margin-top: 4px !important;
+                    padding-top: 3px !important;
+                }
+                #print-container .text-xs {
+                    font-size: 10pt !important;
+                    line-height: 1.2 !important;
                 }
                 .no-print {
                     display: none !important;
@@ -342,133 +342,133 @@ const RegistroSucesso = () => {
                         <h3 className="text-lg font-bold mt-2">Comprovante de Inscrição</h3>
                     </div>
                     
-                    <div className="space-y-1 text-left text-xs">
+                    <div className="space-y-1 text-left text-sm">
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Nome:</span>
-                            <span className="text-green-700 text-xs">{userData.nomeCompleto}</span>
+                            <span className="font-semibold w-28 text-sm">Nome:</span>
+                            <span className="text-green-700 text-sm">{userData.nomeCompleto}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">RG:</span>
-                            <span className="text-xs">{userData.rg || '-'}</span>
+                            <span className="font-semibold w-28 text-sm">RG:</span>
+                            <span className="text-sm">{userData.rg || '-'}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">CPF:</span>
-                            <span className="text-xs">{userData.cpf}</span>
+                            <span className="font-semibold w-28 text-sm">CPF:</span>
+                            <span className="text-sm">{userData.cpf}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">CEP:</span>
-                            <span className="text-xs">{userData.cep}</span>
+                            <span className="font-semibold w-28 text-sm">CEP:</span>
+                            <span className="text-sm">{userData.cep}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Endereço:</span>
-                            <span className="text-xs">{userData.endereco || '-'}</span>
+                            <span className="font-semibold w-28 text-sm">Endereço:</span>
+                            <span className="text-sm">{userData.endereco || '-'}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Bairro:</span>
-                            <span className="text-xs">{userData.bairro}</span>
+                            <span className="font-semibold w-28 text-sm">Bairro:</span>
+                            <span className="text-sm">{userData.bairro}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Número:</span>
-                            <span className="text-xs">{userData.numero}</span>
+                            <span className="font-semibold w-28 text-sm">Número:</span>
+                            <span className="text-sm">{userData.numero}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Cidade:</span>
-                            <span className="text-xs">{userData.cidade}</span>
+                            <span className="font-semibold w-28 text-sm">Cidade:</span>
+                            <span className="text-sm">{userData.cidade}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Estado:</span>
-                            <span className="text-xs">{userData.estado}</span>
+                            <span className="font-semibold w-28 text-sm">Estado:</span>
+                            <span className="text-sm">{userData.estado}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">E-mail:</span>
-                            <span className="text-xs">{userData.email}</span>
+                            <span className="font-semibold w-28 text-sm">E-mail:</span>
+                            <span className="text-sm">{userData.email}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Nascimento:</span>
-                            <span className="text-xs">{userData.dataNascimento}</span>
+                            <span className="font-semibold w-28 text-sm">Nascimento:</span>
+                            <span className="text-sm">{userData.dataNascimento}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Telefone:</span>
-                            <span className="text-xs">{userData.telefone}</span>
+                            <span className="font-semibold w-28 text-sm">Telefone:</span>
+                            <span className="text-sm">{userData.telefone}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">WhatsApp:</span>
-                            <span className="text-xs">{userData.whatsapp || userData.telefone}</span>
+                            <span className="font-semibold w-28 text-sm">WhatsApp:</span>
+                            <span className="text-sm">{userData.whatsapp || userData.telefone}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Facebook:</span>
-                            <span className="text-xs">{userData.facebook || '-'}</span>
+                            <span className="font-semibold w-28 text-sm">Facebook:</span>
+                            <span className="text-sm">{userData.facebook || '-'}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Instagram:</span>
-                            <span className="text-xs">{userData.instagram || '-'}</span>
+                            <span className="font-semibold w-28 text-sm">Instagram:</span>
+                            <span className="text-sm">{userData.instagram || '-'}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Local trabalho:</span>
-                            <span className="text-xs">{userData.localTrabalho}</span>
+                            <span className="font-semibold w-28 text-sm">Local trabalho:</span>
+                            <span className="text-sm">{userData.localTrabalho}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Profissão:</span>
-                            <span className="text-xs">{userData.profissao}</span>
+                            <span className="font-semibold w-28 text-sm">Profissão:</span>
+                            <span className="text-sm">{userData.profissao}</span>
                         </div>
                         
                         <div className="flex">
-                            <span className="font-semibold w-32 text-xs">Cidade curso:</span>
-                            <span className="text-green-700 font-medium text-xs">{userData.cidadeCurso}</span>
+                            <span className="font-semibold w-28 text-sm">Cidade curso:</span>
+                            <span className="text-green-700 font-medium text-sm">{userData.cidadeCurso}</span>
                         </div>
                         
-                        <h4 className="font-semibold pt-2 pb-1 text-sm">Cursos:</h4>
+                        <h4 className="font-semibold pt-2 pb-1 text-base">Cursos:</h4>
                         
                         {/* Cursos em formato mais compacto */}
                         {userData.cursoAPH && (
                             <div className="flex">
-                                <span className="font-semibold w-32 text-xs">APH:</span>
-                                <span className="text-green-600 text-xs">✓ Selecionado</span>
+                                <span className="font-semibold w-28 text-sm">APH:</span>
+                                <span className="text-green-600 text-sm">✓ Selecionado</span>
                             </div>
                         )}
                         
                         {userData.cursoSBV && (
                             <div className="flex">
-                                <span className="font-semibold w-32 text-xs">SBV:</span>
-                                <span className="text-green-600 text-xs">✓ Selecionado</span>
+                                <span className="font-semibold w-28 text-sm">SBV:</span>
+                                <span className="text-green-600 text-sm">✓ Selecionado</span>
                             </div>
                         )}
                         
                         {userData.cursoAPHP && (
                             <div className="flex">
-                                <span className="font-semibold w-32 text-xs">APH-P:</span>
-                                <span className="text-green-600 text-xs">✓ Selecionado</span>
+                                <span className="font-semibold w-28 text-sm">APH-P:</span>
+                                <span className="text-green-600 text-sm">✓ Selecionado</span>
                             </div>
                         )}
                         
                         {userData.cursoRCU && (
                             <div className="flex">
-                                <span className="font-semibold w-32 text-xs">RCU:</span>
-                                <span className="text-green-600 text-xs">✓ Selecionado</span>
+                                <span className="font-semibold w-28 text-sm">RCU:</span>
+                                <span className="text-green-600 text-sm">✓ Selecionado</span>
                             </div>
                         )}
                     </div>
                     
-                    <div className="mt-4 pt-2 border-t border-gray-200">
-                        <div className="text-center text-xs text-gray-500">
-                            <p className="text-xs">Gerado em: {new Date().toLocaleDateString('pt-BR')}</p>
-                            <p className="mt-1 text-xs">EcoAdventure - Desde 2005</p>
+                    <div className="mt-3 pt-2 border-t border-gray-200">
+                        <div className="text-center text-sm text-gray-500">
+                            <p className="text-sm">Gerado em: {new Date().toLocaleDateString('pt-BR')}</p>
+                            <p className="mt-1 text-sm">EcoAdventure - Desde 2005</p>
                         </div>
                     </div>
                 </div>
