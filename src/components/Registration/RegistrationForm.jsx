@@ -78,6 +78,20 @@ const RegistrationForm = () => {
         return `https://${window.location.host}${path}`;
     };
 
+    // Função para formatar data no padrão brasileiro
+    const formatDateToBrazilian = (dateString) => {
+        if (!dateString) return '-';
+        
+        // Se já está no formato brasileiro (DD/MM/AAAA), retorna como está
+        if (dateString.includes('/')) return dateString;
+        
+        // Converte do formato ISO (AAAA-MM-DD) para brasileiro (DD/MM/AAAA)
+        const date = new Date(dateString + 'T00:00:00');
+        if (isNaN(date.getTime())) return dateString; // Se não conseguir converter, retorna original
+        
+        return date.toLocaleDateString('pt-BR');
+    };
+
     // Função para gerar o comprovante em PDF como base64
     const generatePdfAsBase64 = async (data) => {
         // Criar um elemento temporário para renderizar o comprovante
@@ -110,7 +124,7 @@ const RegistrationForm = () => {
                 <div style="margin-bottom: 8px;"><strong>Cidade (Reside):</strong> ${data.cidade}</div>
                 <div style="margin-bottom: 8px;"><strong>Estado:</strong> ${data.estado}</div>
                 <div style="margin-bottom: 8px;"><strong>E-mail:</strong> ${data.email}</div>
-                <div style="margin-bottom: 8px;"><strong>Data Nascimento:</strong> ${data.dataNascimento}</div>
+                <div style="margin-bottom: 8px;"><strong>Data Nascimento:</strong> ${formatDateToBrazilian(data.dataNascimento)}</div>
                 <div style="margin-bottom: 8px;"><strong>Telefone:</strong> ${data.telefone}</div>
                 <div style="margin-bottom: 8px;"><strong>WhatsApp:</strong> ${data.whatsapp || data.telefone}</div>
                 <div style="margin-bottom: 8px;"><strong>Facebook:</strong> ${data.facebook || '-'}</div>
@@ -333,7 +347,7 @@ const RegistrationForm = () => {
                         <div><strong>Cidade (Reside):</strong> {userData.cidade}</div>
                         <div><strong>Estado:</strong> {userData.estado}</div>
                         <div><strong>E-mail:</strong> {userData.email}</div>
-                        <div><strong>Data Nascimento:</strong> {userData.dataNascimento}</div>
+                        <div><strong>Data Nascimento:</strong> {formatDateToBrazilian(userData.dataNascimento)}</div>
                         <div><strong>Telefone:</strong> {userData.telefone}</div>
                         <div><strong>WhatsApp:</strong> {userData.whatsapp || userData.telefone}</div>
                         <div><strong>Facebook:</strong> {userData.facebook || '-'}</div>

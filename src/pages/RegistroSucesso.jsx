@@ -265,6 +265,20 @@ const RegistroSucesso = () => {
 
     const { userData, emailSent } = loadedData;
 
+    // Função para formatar data no padrão brasileiro
+    const formatDateToBrazilian = (dateString) => {
+        if (!dateString) return '-';
+        
+        // Se já está no formato brasileiro (DD/MM/AAAA), retorna como está
+        if (dateString.includes('/')) return dateString;
+        
+        // Converte do formato ISO (AAAA-MM-DD) para brasileiro (DD/MM/AAAA)
+        const date = new Date(dateString + 'T00:00:00');
+        if (isNaN(date.getTime())) return dateString; // Se não conseguir converter, retorna original
+        
+        return date.toLocaleDateString('pt-BR');
+    };
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
             <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-2xl">
@@ -390,9 +404,9 @@ const RegistroSucesso = () => {
                         
                         <div className="flex">
                             <span className="font-semibold w-28 text-sm">Nascimento:</span>
-                            <span className="text-sm">{userData.dataNascimento}</span>
+                            <span className="text-sm">{formatDateToBrazilian(userData.dataNascimento)}</span>
                         </div>
-                        
+
                         <div className="flex">
                             <span className="font-semibold w-28 text-sm">E-mail:</span>
                             <span className="text-sm">{userData.email}</span>
