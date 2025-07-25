@@ -366,18 +366,29 @@ const RegistrationForm = () => {
                         <p>Seus dados foram registrados com sucesso.</p>
                         
                         {successData.pdfInfo && (
-                            <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded">
-                                <p className="text-blue-800 mb-2">
-                                    <strong>📄 Comprovante PDF disponível:</strong>
+                            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <h4 className="text-lg font-semibold text-blue-800 mb-2 flex items-center">
+                                    📄 Comprovante em PDF
+                                </h4>
+                                <p className="text-blue-700 mb-3">
+                                    Seu comprovante em PDF está pronto para download!
                                 </p>
                                 <a 
                                     href={successData.pdfInfo.downloadURL} 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="text-blue-600 hover:text-blue-800 underline break-all text-sm"
+                                    className="inline-flex items-center px-4 py-2 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors mb-3"
                                 >
-                                    {successData.pdfInfo.fileName}
+                                    📥 Baixar PDF para Impressão
                                 </a>
+                                <div className="text-sm text-gray-600">
+                                    <p><strong>Arquivo:</strong> {successData.pdfInfo.fileName}</p>
+                                    <p className="break-all"><strong>Link direto:</strong> 
+                                        <a href={successData.pdfInfo.downloadURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 ml-1">
+                                            {successData.pdfInfo.downloadURL}
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
                         )}
                         

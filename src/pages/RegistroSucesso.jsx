@@ -32,7 +32,8 @@ const RegistroSucesso = () => {
             setLoadedData({
                 userData: location.state.userData,
                 emailSent: location.state.emailSent || false,
-                registrationId: location.state.registrationId || registrationId
+                registrationId: location.state.registrationId || registrationId,
+                pdfInfo: location.state.pdfInfo || null // Incluir pdfInfo se disponível
             });
             setIsLoading(false);
             return;
@@ -57,7 +58,8 @@ const RegistroSucesso = () => {
                     setLoadedData({
                         userData: parsedData,
                         emailSent: true, // Assume que veio do email
-                        registrationId
+                        registrationId,
+                        pdfInfo: parsedData.pdfInfo || null // Incluir pdfInfo se disponível
                     });
                 } else {
                     console.error("Não foi possível encontrar os dados de registro");
@@ -300,6 +302,34 @@ const RegistroSucesso = () => {
                         </div>
                     )}
                 </div>
+
+                {/* Seção do PDF do Firebase */}
+                {loadedData && loadedData.pdfInfo && (
+                    <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg no-print">
+                        <h3 className="text-lg font-semibold text-blue-800 mb-2 flex items-center">
+                            📄 Comprovante em PDF
+                        </h3>
+                        <p className="text-blue-700 mb-3">
+                            Seu comprovante em PDF está pronto para download!
+                        </p>
+                        <a 
+                            href={loadedData.pdfInfo.downloadURL} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-4 py-2 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors"
+                        >
+                            📥 Baixar PDF para Impressão
+                        </a>
+                        <div className="mt-3 text-sm text-gray-600">
+                            <p><strong>Arquivo:</strong> {loadedData.pdfInfo.fileName}</p>
+                            <p className="break-all"><strong>Link direto:</strong> 
+                                <a href={loadedData.pdfInfo.downloadURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 ml-1">
+                                    {loadedData.pdfInfo.downloadURL}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                )}
 
                 <div className="flex flex-wrap justify-center mb-6 gap-3 no-print">
                     <button
