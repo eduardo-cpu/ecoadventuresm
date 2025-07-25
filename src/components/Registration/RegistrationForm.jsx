@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import firebaseStorageService from '../../services/firebaseStorageService';
 
 const RegistrationForm = () => {
     const navigate = useNavigate();
@@ -48,10 +47,39 @@ const RegistrationForm = () => {
             console.log("Inicializando EmailJS com chave pública:", EMAIL_PUBLIC_KEY);
             emailjs.init(EMAIL_PUBLIC_KEY);
             console.log("EmailJS inicializado com sucesso!");
+            
+            // Limpar registros antigos (mais de 30 dias)
+            cleanOldRegistrations();
         } catch (error) {
             console.error("Erro ao inicializar EmailJS:", error);
         }
     }, []);
+
+    // Função para limpar registros antigos do localStorage
+    const cleanOldRegistrations = () => {
+        try {
+            const thirtyDaysAgo = Date.now() - (30 * 24 * 60 * 60 * 1000); // 30 dias em ms
+            
+            Object.keys(localStorage).forEach(key => {
+                if (key.startsWith('registration_backup_')) {
+                    try {
+                        const data = JSON.parse(localStorage.getItem(key));
+                        const submissionDate = new Date(data.dateSubmitted).getTime();
+                        
+                        if (submissionDate < thirtyDaysAgo) {
+                            localStorage.removeItem(key);
+                            console.log(`Registro antigo removido: ${key}`);
+                        }
+                    } catch (e) {
+                        // Se não conseguir analisar, remove
+                        localStorage.removeItem(key);
+                    }
+                }
+            });
+        } catch (error) {
+            console.warn("Erro ao limpar registros antigos:", error);
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -92,117 +120,29 @@ const RegistrationForm = () => {
         return date.toLocaleDateString('pt-BR');
     };
 
-    // Função para gerar o comprovante em PDF como base64
-    const generatePdfAsBase64 = async (data) => {
-        // Criar um elemento temporário para renderizar o comprovante
-        const tempElement = document.createElement('div');
-        tempElement.style.width = '800px'; // Largura fixa para melhor qualidade
-        tempElement.style.padding = '20px';
-        tempElement.style.position = 'absolute';
-        tempElement.style.left = '-9999px';
-        tempElement.style.background = 'white';
-        tempElement.id = 'temp-pdf-container';
-        
-        // Adicionar o elemento ao body
-        document.body.appendChild(tempElement);
-        
-        // Renderizar o conteúdo do comprovante
-        tempElement.innerHTML = `
-            <div style="text-align: center; margin-bottom: 20px;">
-                <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 12px;">EcoAdventure</h2>
-                <h3 style="font-size: 20px; font-weight: bold;">Comprovante de Inscrição</h3>
-            </div>
-            
-            <div style="margin-bottom: 20px;">
-                <div style="margin-bottom: 8px;"><strong>Nome completo:</strong> ${data.nomeCompleto}</div>
-                <div style="margin-bottom: 8px;"><strong>RG:</strong> ${data.rg || '-'}</div>
-                <div style="margin-bottom: 8px;"><strong>CPF:</strong> ${data.cpf}</div>
-                <div style="margin-bottom: 8px;"><strong>CEP:</strong> ${data.cep}</div>
-                <div style="margin-bottom: 8px;"><strong>Endereço:</strong> ${data.endereco || '-'}</div>
-                <div style="margin-bottom: 8px;"><strong>Bairro:</strong> ${data.bairro}</div>
-                <div style="margin-bottom: 8px;"><strong>Número:</strong> ${data.numero}</div>
-                <div style="margin-bottom: 8px;"><strong>Cidade (Reside):</strong> ${data.cidade}</div>
-                <div style="margin-bottom: 8px;"><strong>Estado:</strong> ${data.estado}</div>
-                <div style="margin-bottom: 8px;"><strong>E-mail:</strong> ${data.email}</div>
-                <div style="margin-bottom: 8px;"><strong>Data Nascimento:</strong> ${formatDateToBrazilian(data.dataNascimento)}</div>
-                <div style="margin-bottom: 8px;"><strong>Telefone:</strong> ${data.telefone}</div>
-                <div style="margin-bottom: 8px;"><strong>WhatsApp:</strong> ${data.whatsapp || data.telefone}</div>
-                <div style="margin-bottom: 8px;"><strong>Facebook:</strong> ${data.facebook || '-'}</div>
-                <div style="margin-bottom: 8px;"><strong>Instagram:</strong> ${data.instagram || '-'}</div>
-                <div style="margin-bottom: 8px;"><strong>Local onde trabalha:</strong> ${data.localTrabalho}</div>
-                <div style="margin-bottom: 8px;"><strong>Profissão:</strong> ${data.profissao}</div>
-                <div style="margin-bottom: 8px;"><strong>Cidade do curso:</strong> ${data.cidadeCurso}</div>
-                
-                <h4 style="font-size: 18px; font-weight: bold; margin-top: 16px; margin-bottom: 12px;">Cursos Selecionados:</h4>
-                
-                <div style="margin-bottom: 8px;">
-                    <strong>APH - Atendimento pré hospitalar:</strong> 
-                    ${data.cursoAPH ? '✓ Selecionado' : '- Não selecionado'}
-                </div>
-                
-                <div style="margin-bottom: 8px;">
-                    <strong>SBV - Suporte Básico de Vida:</strong> 
-                    ${data.cursoSBV ? '✓ Selecionado' : '- Não selecionado'}
-                </div>
-                
-                <div style="margin-bottom: 8px;">
-                    <strong>APH-P - Atendimento Pré Hospitalar Pediátrico:</strong> 
-                    ${data.cursoAPHP ? '✓ Selecionado' : '- Não selecionado'}
-                </div>
-                
-                <div style="margin-bottom: 8px;">
-                    <strong>RCU - Resgate em Conflitos Urbanos:</strong> 
-                    ${data.cursoRCU ? '✓ Selecionado' : '- Não selecionado'}
-                </div>
-            </div>
-            
-            <div style="margin-top: 30px; padding-top: 16px; border-top: 1px solid #ccc; text-align: center;">
-                <div style="font-size: 14px; color: #666;">
-                    <p>Formulário gerado em: ${new Date().toLocaleDateString('pt-BR')}</p>
-                    <p style="margin-top: 4px;">EcoAdventure Cursos e Treinamentos - Desde 2005</p>
-                </div>
-                
-                <div style="margin-top: 24px; padding-top: 16px; border-top: 1px dashed #ccc;">
-                    <p style="font-size: 14px; font-weight: 500;">
-                        Assinatura do responsável: _______________________________________
-                    </p>
-                </div>
-            </div>
-        `;
-        
+    // Função para gerar o comprovante em PDF e fazer upload para Firebase
+    const generateAndUploadPdf = async (data, registrationId) => {
         try {
-            // Capturar o elemento como imagem
-            const canvas = await html2canvas(tempElement, {
-                scale: 2, // Qualidade melhor
-                logging: false,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: '#ffffff'
-            });
+            console.log("Gerando PDF e fazendo upload para Firebase...");
             
-            // Criar o PDF
-            const pdf = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-            });
+            // Gerar PDF como blob
+            const pdfBlob = await firebaseStorageService.generatePdfBlob(data);
             
-            const imgWidth = 210; // A4 width
-            const imgHeight = canvas.height * imgWidth / canvas.width;
+            // Nome do arquivo
+            const fileName = `Comprovante_${data.nomeCompleto.replace(/\s/g, '_')}_${registrationId}.pdf`;
             
-            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+            // Fazer upload para Firebase Storage
+            const downloadURL = await firebaseStorageService.uploadPdf(pdfBlob, fileName, registrationId);
             
-            // Obter o PDF como base64
-            const pdfBase64 = pdf.output('datauristring');
-            
-            // Limpar o elemento temporário
-            document.body.removeChild(tempElement);
-            
-            return pdfBase64;
+            console.log("PDF gerado e enviado para Firebase com sucesso!");
+            return {
+                downloadURL,
+                fileName,
+                fileSize: pdfBlob.size
+            };
         } catch (error) {
-            console.error('Erro ao gerar PDF:', error);
-            document.body.removeChild(tempElement);
-            return null;
+            console.error('Erro ao gerar e fazer upload do PDF:', error);
+            throw error;
         }
     };
 
@@ -220,7 +160,26 @@ const RegistrationForm = () => {
             const viewUrl = generateCompatibleUrl(`/registro-sucesso?id=${registrationId}`);
             const printUrl = generateCompatibleUrl(`/registro-sucesso?print=true&id=${registrationId}`);
             
-            // Preparar parâmetros para o email - sem incluir o PDF como anexo
+            // Gerar PDF e fazer upload para Firebase Storage
+            let pdfInfo = null;
+            try {
+                console.log("🔍 Verificando disponibilidade do Firebase Storage...");
+                const storageAvailable = firebaseStorageService.isAvailable();
+                console.log("📋 Storage disponível:", storageAvailable);
+                
+                if (storageAvailable) {
+                    console.log("✅ Gerando PDF e fazendo upload para Firebase...");
+                    pdfInfo = await generateAndUploadPdf(formData, registrationId);
+                    console.log("✅ PDF enviado para Firebase com sucesso:", pdfInfo);
+                } else {
+                    console.warn("❌ Firebase Storage não configurado - PDF não será salvo na nuvem");
+                }
+            } catch (pdfError) {
+                console.warn("❌ Erro ao gerar/enviar PDF para Firebase:", pdfError);
+                // Continue sem o PDF se houver erro
+            }
+
+            // Preparar parâmetros para o email - incluindo link do PDF no Firebase
             const templateParams = {
                 nomeCompleto: formData.nomeCompleto,
                 rg: formData.rg || '-',
@@ -246,27 +205,50 @@ const RegistrationForm = () => {
                 cursoRCU: formData.cursoRCU ? '✓ Verificado' : '- Não selecionado',
                 data_inscricao: new Date().toLocaleDateString('pt-BR'),
                 
-                // URLs adequadas para o ambiente atual (local ou produção)
-                url_inscricao: viewUrl,
-                url_impressao: printUrl,
+                // URLs adequadas para o ambiente atual
+                // Se o PDF foi gerado no Firebase, usar o link do PDF
+                // Caso contrário, usar links para a página web
+                url_inscricao: pdfInfo ? pdfInfo.downloadURL : viewUrl,
+                url_impressao: pdfInfo ? pdfInfo.downloadURL : printUrl,
+                
+                // URLs da página web sempre disponíveis como alternativa
+                url_pagina_web: viewUrl,
+                url_impressao_web: printUrl,
                 
                 // URLs como texto para cópia manual
-                texto_url_comprovante: viewUrl,
-                texto_imprimir: printUrl,
+                texto_url_comprovante: pdfInfo ? pdfInfo.downloadURL : viewUrl,
+                texto_imprimir: pdfInfo ? pdfInfo.downloadURL : printUrl,
                 
-                // Instrução clara para ambiente local
-                instrucao_manual: `Se os links não funcionarem, por favor copie e cole este endereço no seu navegador: ${viewUrl}`,
+                // Instrução atualizada
+                instrucao_manual: pdfInfo 
+                    ? `Para baixar seu comprovante em PDF, clique no link ou copie e cole: ${pdfInfo.downloadURL}`
+                    : `Se os links não funcionarem, por favor copie e cole este endereço no seu navegador: ${viewUrl}`,
                 
                 // Indicador de ambiente para ajustar o template
                 ambiente: isLocalhost() ? 'local' : 'producao',
+                
+                // Informações do PDF (sempre incluídas se disponível)
+                ...(pdfInfo && { 
+                    pdf_download_url: pdfInfo.downloadURL,
+                    pdf_filename: pdfInfo.fileName,
+                    pdf_disponivel: true,
+                    pdf_message: `Seu comprovante em PDF está pronto para download!`
+                }),
+                
+                // Se não tem PDF, indicar que só tem versão web
+                ...(!pdfInfo && {
+                    pdf_disponivel: false,
+                    pdf_message: `Comprovante disponível na versão online`
+                })
             };
 
-            // Salvar dados localmente
+            // Salvar dados localmente (incluindo informações do PDF)
             try {
                 const registrationData = {
                     ...formData,
                     registrationId,
-                    dateSubmitted: new Date().toISOString()
+                    dateSubmitted: new Date().toISOString(),
+                    pdfInfo: pdfInfo || null
                 };
                 sessionStorage.setItem(`registration_${registrationId}`, JSON.stringify(registrationData));
                 localStorage.setItem(`registration_backup_${registrationId}`, JSON.stringify(registrationData));
@@ -292,7 +274,12 @@ const RegistrationForm = () => {
             } catch (emailErr) {
                 console.error('Erro ao enviar email:', emailErr);
                 console.error('Detalhes do erro:', emailErr.text || emailErr.message);
-                setError(`Ocorreu um erro ao enviar o email: ${emailErr.text || emailErr.message}. A inscrição foi salva, mas o email não foi enviado.`);
+                
+                let errorMessage = `Ocorreu um erro ao enviar o email: ${emailErr.text || emailErr.message}.`;
+                if (pdfInfo) {
+                    errorMessage += ` Porém, seu comprovante está disponível em: ${pdfInfo.downloadURL}`;
+                }
+                setError(errorMessage);
                 emailSuccess = false;
             }
 
@@ -300,7 +287,8 @@ const RegistrationForm = () => {
             const successState = {
                 userData: formData,
                 emailSent: emailSuccess,
-                registrationId
+                registrationId,
+                pdfInfo: pdfInfo || null
             };
             
             setSuccessData(successState);
@@ -342,8 +330,8 @@ const RegistrationForm = () => {
                         <div><strong>RG:</strong> {userData.rg}</div>
                         <div><strong>CEP:</strong> {userData.cep}</div>
                         <div><strong>Endereço:</strong> {userData.endereco || '-'}</div>
-                        <div><strong>Bairro:</strong> {userData.bairro}</div>
                         <div><strong>Número:</strong> {userData.numero}</div>
+                        <div><strong>Bairro:</strong> {userData.bairro}</div>
                         <div><strong>Cidade (Reside):</strong> {userData.cidade}</div>
                         <div><strong>Estado:</strong> {userData.estado}</div>
                         <div><strong>E-mail:</strong> {userData.email}</div>
@@ -377,6 +365,22 @@ const RegistrationForm = () => {
                         <h3 className="font-bold mb-2">Inscrição realizada com sucesso!</h3>
                         <p>Seus dados foram registrados com sucesso.</p>
                         
+                        {successData.pdfInfo && (
+                            <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded">
+                                <p className="text-blue-800 mb-2">
+                                    <strong>📄 Comprovante PDF disponível:</strong>
+                                </p>
+                                <a 
+                                    href={successData.pdfInfo.downloadURL} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 hover:text-blue-800 underline break-all text-sm"
+                                >
+                                    {successData.pdfInfo.fileName}
+                                </a>
+                            </div>
+                        )}
+                        
                         <div className="mt-4 flex flex-wrap gap-3">
                             <button 
                                 onClick={goToReceipt}
@@ -387,6 +391,20 @@ const RegistrationForm = () => {
                                 </svg>
                                 Ver e Imprimir Comprovante
                             </button>
+                            
+                            {successData.pdfInfo && (
+                                <a 
+                                    href={successData.pdfInfo.downloadURL} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="px-4 py-2 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 flex items-center"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Baixar PDF
+                                </a>
+                            )}
                         </div>
                     </div>
                 ) : (

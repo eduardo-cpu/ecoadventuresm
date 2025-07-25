@@ -381,15 +381,15 @@ const RegistroSucesso = () => {
                             <span className="font-semibold w-28 text-sm">Endereço:</span>
                             <span className="text-sm">{userData.endereco || '-'}</span>
                         </div>
+
+                        <div className="flex">
+                            <span className="font-semibold w-28 text-sm">Número:</span>
+                            <span className="text-sm">{userData.numero}</span>
+                        </div>
                         
                         <div className="flex">
                             <span className="font-semibold w-28 text-sm">Bairro:</span>
                             <span className="text-sm">{userData.bairro}</span>
-                        </div>
-                        
-                        <div className="flex">
-                            <span className="font-semibold w-28 text-sm">Número:</span>
-                            <span className="text-sm">{userData.numero}</span>
                         </div>
                         
                         <div className="flex">
