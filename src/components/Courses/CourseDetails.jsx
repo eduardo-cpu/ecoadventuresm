@@ -29,9 +29,14 @@ const CourseDetails = ({ course }) => {
                     <h2 className="block mt-1 text-2xl leading-tight font-medium text-black">
                         {course.title}
                     </h2>
-                    <p className="mt-4 text-gray-600">
-                        {course.description}
-                    </p>
+                    <div className="mt-4">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">Conteúdo Programático:</h3>
+                        <div className="bg-gray-50 rounded-lg p-4">
+                            <p className="text-gray-700 leading-relaxed">
+                                {course.description}
+                            </p>
+                        </div>
+                    </div>
                     
                     <div className="mt-6">
                         <div className="flex items-center">

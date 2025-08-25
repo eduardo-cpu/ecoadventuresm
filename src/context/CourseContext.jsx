@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { fetchCourses, addCourse } from '../services/courseService';
+import { addCourse } from '../services/courseService';
 
 export const CourseContext = createContext();
 
@@ -26,7 +26,7 @@ const MOCK_COURSES = [
         code: "APH-T",
         title: "Atendimento Pré Hospitalar Tático",
         shortDescription: "Treinamento especializado para profissionais que atuam em situações táticas e de risco.",
-        description: ".",
+        description: "Em breve será disponibilizado o conteúdo programático deste curso.",
         image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     },
     {
@@ -64,21 +64,14 @@ export const CourseProvider = ({ children }) => {
     useEffect(() => {
         const loadCourses = async () => {
             try {
-                // Try to fetch from API first
-                const fetchedCourses = await fetchCourses();
-                // Garantir que fetchedCourses seja um array
-                if (fetchedCourses && Array.isArray(fetchedCourses)) {
-                    setCourses(fetchedCourses);
-                } else {
-                    console.warn('API retornou dados inválidos para cursos. Usando dados mockados.');
-                    setCourses(MOCK_COURSES);
-                }
-                setError(null); // Reset any errors if successful
-            } catch (err) {
-                console.log('Using mock data due to API error:', err.message);
-                // Fall back to mock data if API fails
+                // Usar sempre os dados mockados para garantir consistência
+                console.log('Usando dados mockados dos cursos');
                 setCourses(MOCK_COURSES);
-                setError(null); // Reset error since we're using mock data as fallback
+                setError(null);
+            } catch (err) {
+                console.log('Erro ao carregar cursos:', err.message);
+                setCourses(MOCK_COURSES);
+                setError(null);
             } finally {
                 setLoading(false);
             }

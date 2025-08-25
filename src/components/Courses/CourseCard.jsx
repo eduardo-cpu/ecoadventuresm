@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 const CourseCard = ({ course }) => {
     return (
         <div className="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] mb-8">
-            <div className="relative">
+            <div className="relative bg-gray-50">
                 <img 
-                    className="w-full h-56 object-cover" 
+                    className={`w-full h-56 ${
+                        course.image.includes('/sbv.png') 
+                            ? 'object-cover object-[50%_0%]' 
+                            : 'object-cover'
+                    }`}
                     src={course.image} 
                     alt={course.title} 
                     onError={(e) => {
@@ -19,7 +23,7 @@ const CourseCard = ({ course }) => {
             <div className="px-7 py-6">
                 <span className="text-blue-500 text-sm font-semibold tracking-wide uppercase">Formação de Socorristas</span>
                 <h2 className="font-semibold text-2xl mt-2 text-gray-900">{course.title}</h2>
-                <p className="text-gray-500 mt-3 leading-relaxed text-base line-clamp-3">{course.description}</p>
+                <p className="text-gray-500 mt-3 leading-relaxed text-base line-clamp-3">{course.shortDescription}</p>
                 
                 <div className="mt-6">
                     <Link 

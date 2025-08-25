@@ -82,6 +82,10 @@ const Home = () => {
                             src="/inicial.png" 
                             alt="Equipe EcoAdventure com ambulâncias e bandeiras" 
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = '/inicial.jpeg';
+                            }}
                         />
                     </div>
                 </div>
